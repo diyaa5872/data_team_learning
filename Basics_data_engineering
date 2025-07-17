@@ -1,0 +1,167 @@
+## Structured Data -
+
+- fixed format
+- rows and columns
+- easily searchable and stored in Databases like SQL
+- easy to enter and store queries
+- e.g. MYSQL, spreadsheets, customer records, sensor data etc.
+
+### Semi-structured Data -
+
+- no strict schema but still organizes data elements.
+- no relational schema
+- e.g. SON, XML, YAML files, email and NoSQL Database, HTML pages
+- flexible schema, self-describing structure, can be transformed to structured data
+
+### Unstructured Data -
+
+- most abundant type of data, hardest to store, but hardest to store manage, and analyze directly.
+- e.g. text files, images, text logs, chat logs and webpages without meta data.
+- required tools like AI, NLP etc for analyzing the data.
+
+![image.png](attachment:5120bb74-cdad-47b0-a0a7-d3ec8770d243:image.png)
+
+### Table -
+
+- basic unit of data storage
+
+### Master Table -
+
+- stores core reference data
+- prevents data duplication
+- consists of fixed rows (less likely to change)
+- Master Data - Data which seldom changes. For example, if a company has a list of 5 customer then they will maintain a customer master table having the name and address of the customers along with other data which will remain permanent and is less likely to change.
+
+### Schema -
+
+- **Logical container** for database objects like tables, views, indexes, stored procedures, etc. It helps organize and group related database objects.
+- It works as a folder in the database.
+
+**Example:**
+
+- `Sales.Customers`
+- `HR.Employees`
+
+Here, `Sales` and `HR` are **schemas**. `Customers` and `Employees` are **tables** inside those schemas.
+
+### Catalog -
+
+- A catalog is the **highest-level namespace** in a database system. It contains **schemas**, which in turn contain **tables** and other objects.
+- e.g.
+
+ CompanyDB
+└── Schema: HR
+         └── Table: Employees
+└── Schema: Finance
+          └── Table: Transactions
+
+### Data Lake -
+
+A **Data Lake** is a **centralized repository** that allows you to store **all your structured, semi-structured, and unstructured data** at any scale. 
+
+- scalable
+- flexible
+- cost-effective
+- schema-on-read
+
+use data ingestion (allows to bring data from different sources)
+
+raw data gets stored in various storage systems like Amazon s3, Azure Data Lake storage, Hadoop HDFS etc
+
+for processing and analytics uses data like apache spark, databricks, snowflake etc
+
+### Data Warehouse -
+
+A data warehouse is a centralized, structured repository used to store, process, and analyze large volumes of historical data from multiple sources. It's optimized for business intelligence (BI), reporting, and analytics.
+
+| Feature | Description |
+| --- | --- |
+| **Structured Data** | Only stores cleaned and formatted (structured) data |
+| **Schema-on-write** | Data must follow a strict schema before being loaded |
+| **OLAP-focused** | Designed for fast, complex analytical queries |
+| **Time-variant** | Tracks changes over time (historical data) |
+| **Read-optimized** | Faster read performance for analytics |
+| **ETL Required** | Uses **ETL (Extract, Transform, Load)** before storing data |
+
+platforms are -
+
+- **Amazon Redshift**
+- **Google BigQuery**
+- **Snowflake**
+- **Azure Synapse Analytics**
+- **Oracle Exadata**
+
+![image.png](attachment:bcc5d2fb-f15d-48c1-8474-3e3374c88b74:image.png)
+
+### Compute -
+
+When data engineers build pipelines or workflows, they don’t just **store** data — they also need to **process it**, which requires **compute**.
+
+### 🔧 Compute is used for:
+
+| Task | Example |
+| --- | --- |
+| **Data Ingestion** | Pulling data from APIs, databases, or streams |
+| **Data Transformation (ETL/ELT)** | Cleaning, joining, filtering, or aggregating raw data |
+| **Batch & Stream Processing** | Running Spark jobs or real-time Kafka streams |
+| **Data Loading** | Writing processed data into a warehouse or lake |
+| **Orchestration Tasks** | Running workflows via Airflow or dbt |
+| **ML Feature Engineering** | Preparing data for machine learning models |
+
+Databricks is a type of Compute Tool (consists of processing engine, workload support, scalability, ease of use)
+
+```
+    🔽 Data Sources
+ (Databases, APIs, Files)
+         ⬇️
+     🔄 Databricks
+   (Compute/Processing)
+         ⬇️
+     🧱 Storage Layer
+ (Delta Lake, Data Warehouse)
+         ⬇️
+   📊 BI/ML Tools
+ (Power BI, ML models)
+
+```
+
+### Hadoop -
+
+Apache Hadoop is an open-source framework that allows you to store and process large datasets across clusters of computers using distributed computing. It was one of the first technologies designed to handle big data efficiently at scale.
+
+it has four main modules -
+
+- HDFS - Hadoop distributef file systems
+- MapReduce -  programming model for **parallel processing** of large data sets
+- YARN -  It ensures jobs get CPU and memory resources from the cluster.
+- Hadoop Common - Shared utilities and libraries used by other Hadoop modules.
+
+### What Hadoop Is Used For -
+
+- **Batch data processing**
+- **Data storage across clusters**
+- **ETL pipelines**
+- **Analytics on large volumes of data**
+- **Preprocessing for machine learning or BI**
+
+### Spark -
+
+Apache Spark is an open-source, distributed computing system designed for fast, large-scale data processing. Unlike Hadoop MapReduce which writes intermediate data to hard disk, it stores data in memory.
+
+Core components of spark are -
+
+- spark core - handles memory management, task scheduling, fault recovery, etc.
+- spark SQL - Query structured data using SQL or DataFrames.
+- spark streaming - Processes real-time streaming data.
+- MLlib - Machine learning library (classification, clustering, etc.).
+- GraphX - Graph computation engine (for PageRank, social networks, etc.).
+
+Main features -
+
+- languages support
+- fault tolerant
+- distributed processing
+- in-memory compute
+- unified engine (all things takes place at one place like batch streamng, ML and graphs)
+
+## 🔁 Spark vs Hadoop (MapReduce)
